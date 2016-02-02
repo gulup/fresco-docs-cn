@@ -60,16 +60,13 @@ ImagePipelineConfig config = ImagePipelineConfig.newBuilder()
 目前，我们必须显式地在加载时，允许渐进式JPEG图片加载。
 
 ```java
-Uri uri;
-ImageRequest request = ImageRequestBuilder
-    .newBuilderWithSource(uri)
+ImageRequest request = ImageRequestBuilder.newBuilderWithSource(uri)
     .setProgressiveRenderingEnabled(true)
     .build();
-PipelineDraweeController controller = Fresco.newControllerBuilder()
-    .setImageRequest(requests)
+DraweeController controller = Fresco.newDraweeControllerBuilder()
+    .setImageRequest(request)
     .setOldController(mSimpleDraweeView.getController())
     .build();
-
 mSimpleDraweeView.setController(controller);
 ```
 
